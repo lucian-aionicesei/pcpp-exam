@@ -1,0 +1,30 @@
+> Task :app:compileJava UP-TO-DATE
+> Task :app:processResources UP-TO-DATE
+> Task :app:classes UP-TO-DATE
+
+> Task :app:run
+Array Size: 5697
+# Occurences of ipsum :1430
+countParallelN       1          7292346,9 ns   11437,25         64
+countParallelN       2          3997564,9 ns   32793,67         64
+countParallelN       3          2956146,5 ns   10929,24        128
+countParallelN       4          2408857,6 ns   38367,32        128
+countParallelN       5          2222071,4 ns  140458,85        128
+countParallelN       6          2249161,2 ns   58930,98        128
+countParallelN       7          2587324,5 ns   30332,08        128
+countParallelN       8          2843537,7 ns   97058,86        128
+countParallelN       9          2617631,3 ns   73665,68        128
+countParallelN      10          2669371,0 ns  125834,64        128
+countParallelN      11          2590169,2 ns   72840,86        128
+countParallelN      12          2533881,3 ns   37732,05        128
+countParallelN      13          2584733,5 ns   89251,67        128
+countParallelN      14          2681376,9 ns   73038,77        128
+countParallelN      15          2572656,2 ns   35916,57        128
+countParallelN      16          2574879,2 ns   24394,06        128
+countParallelN      17          2698486,2 ns  125218,80        128
+countParallelN      18          2591507,6 ns   35462,39        128
+countParallelN      19          2617649,3 ns   21725,50        128
+countParallelN      20          2628495,6 ns   25887,83        128
+
+BUILD SUCCESSFUL in 2m 13s
+3 actionable tasks: 1 executed, 2 up-to-date

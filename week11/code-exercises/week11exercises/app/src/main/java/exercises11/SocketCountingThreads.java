@@ -16,41 +16,44 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import benchmarking.Benchmark;  // Mark7 modified to show seconds in stead of nS
+import benchmarking.Benchmark; // Mark7 modified to show seconds in stead of nS
 import benchmarking.Benchmarkable;
 
-public class SocketCountingThreads{
+public class SocketCountingThreads {
 
   private Socket clientSocket;
   private PrintWriter out;
   private BufferedReader in;
-  Monitor clientLock= new Monitor();
-  private static int iterations= 10;
-  private static int noofThreads= 10;
-  private final static String URL=
-    "127.0.0.1";     // this PC
-    //"localhost";     // this PC
+  Monitor clientLock = new Monitor();
+  private static int iterations = 10;
+  private static int noofThreads = 10;
+  private final static String URL = "127.0.0.1"; // this PC
+  // "localhost"; // this PC
 
   public SocketCountingThreads() {
-    startConnection(URL, 8080); 
-    Benchmark.Mark7("Socket com:", i -> Transaction()); 
+    startConnection(URL, 8080);
+    Benchmark.Mark7("Socket com:", i -> Transaction());
     sendMessage("stop");
     stopConnection();
   }
 
   public void startConnection(String ip, int port) {
     try {
-      clientSocket= new Socket(ip, port);
-      out= new PrintWriter(clientSocket.getOutputStream(), true);
-      in= new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-    } catch (IOException e) {  System.out.println(e.getMessage());   }
+      clientSocket = new Socket(ip, port);
+      out = new PrintWriter(clientSocket.getOutputStream(), true);
+      in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+    } catch (IOException e) {
+      System.out.println(e.getMessage());
+    }
   }
 
   public String sendMessage(String msg) {
     try {
       out.println(msg);
       return in.readLine();
-    } catch (Exception e) {  return null;   }
+    } catch (Exception e) {
+      return null;
+    }
   }
 
   public void stopConnection() {
@@ -58,14 +61,16 @@ public class SocketCountingThreads{
       in.close();
       out.close();
       clientSocket.close();
-    } catch (IOException e) {  System.out.println(e.getMessage());   }
+    } catch (IOException e) {
+      System.out.println(e.getMessage());
+    }
   }
 
   public class Monitor {
     public synchronized void incr() {
-      int c= Integer.parseInt(sendMessage("get"));
-      c= c+1;
-      sendMessage("put&"+c);
+      int c = Integer.parseInt(sendMessage("get"));
+      c = c + 1;
+      sendMessage("put&" + c);
     }
   }
 
@@ -74,47 +79,50 @@ public class SocketCountingThreads{
     private void noLocking() {
       // Fetching, incrementing and storing not atomic
       int c;
-      for (int k= 0; k < iterations; k= k+1 ) {
-        c= Integer.parseInt(sendMessage("get"));
-        c= c+1;
-        sendMessage("put&"+c);
+      for (int k = 0; k < iterations; k = k + 1) {
+        c = Integer.parseInt(sendMessage("get"));
+        c = c + 1;
+        sendMessage("put&" + c);
       }
     }
 
     private void serverLocking() {
-      for (int k= 0; k < iterations; k= k+1 ) {
+      for (int k = 0; k < iterations; k = k + 1) {
         sendMessage("incr");
       }
     }
 
     private void clientLocking() {
-      for (int k= 0; k < iterations; k= k+1 ) {
+      for (int k = 0; k < iterations; k = k + 1) {
         clientLock.incr();
       }
     }
 
     public void run() {
-      noLocking();
-      //serverLocking(); 
-      //clientLocking();
+      // noLocking();
+      // serverLocking();
+      clientLocking();
     }
   }
 
   private int Transaction() {
-    TransactionThread[] t= new TransactionThread[noofThreads];
-    sendMessage("put&"+0); // reset counter on server to 0
-    for (int j= 0; j < noofThreads; j= j+1 ) {
-      t[j]= new TransactionThread();
+    TransactionThread[] t = new TransactionThread[noofThreads];
+    sendMessage("put&" + 0); // reset counter on server to 0
+    for (int j = 0; j < noofThreads; j = j + 1) {
+      t[j] = new TransactionThread();
       t[j].start();
-    };
+    }
+    ;
     try {
-      for (int j=0; j < noofThreads; j= j+1 )
-      t[j].join();
-    } catch (InterruptedException ioe) { };
+      for (int j = 0; j < noofThreads; j = j + 1)
+        t[j].join();
+    } catch (InterruptedException ioe) {
+    }
+    ;
     return 0;
   }
 
-  public static void main(String[] args) { 
+  public static void main(String[] args) {
     new SocketCountingThreads();
   }
 }

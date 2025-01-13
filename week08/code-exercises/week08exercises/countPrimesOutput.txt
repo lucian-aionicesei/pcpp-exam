@@ -1,0 +1,45 @@
+> Task :app:compileJava UP-TO-DATE
+> Task :app:processResources UP-TO-DATE
+> Task :app:classes UP-TO-DATE
+
+> Task :app:run
+# OS:   Mac OS X; 14.5; aarch64
+# JVM:  Eclipse Adoptium; 11.0.22
+# CPU:  null; 8 "cores"
+# Date: 2024-10-27T21:13:48+0100
+countSequential                 2571276,0 ns    5930,20        128
+countParallelN       1          2724101,0 ns   38520,78        128
+countParallelN       2          1895455,5 ns   88088,81        128
+countParallelN       3          1758665,7 ns  204678,03        256
+countParallelN       4          2504662,0 ns   75516,69        128
+countParallelN       5          2754280,1 ns  145430,54        128
+countParallelN       6          2718960,1 ns   64646,35        128
+countParallelN       7          2723662,5 ns   27345,59        128
+countParallelN       8          2725671,2 ns   17300,88        128
+countParallelN       9          2758253,3 ns   45559,49        128
+countParallelN      10          2762357,4 ns   22935,34        128
+countParallelN      11          2793488,0 ns   50965,15        128
+countParallelN      12          2856716,4 ns  140463,89        128
+countParallelN      13          2820735,0 ns   55105,26        128
+countParallelN      14          2857525,8 ns   66386,16        128
+countParallelN      15          2817704,3 ns   23248,73        128
+countParallelN      16          2819040,6 ns   29214,94        128
+countParallelN      17          2833642,2 ns   27555,55        128
+countParallelN      18          2834931,9 ns   11659,60        128
+countParallelN      19          2835829,3 ns   15821,69        128
+countParallelN      20          2843934,0 ns   17890,38        128
+countParallelN      21          2862773,0 ns   19002,49        128
+countParallelN      22          2858346,5 ns   11069,88        128
+countParallelN      23          2972560,5 ns  126586,48        128
+countParallelN      24          2889604,5 ns   10679,31        128
+countParallelN      25          2957822,4 ns   47982,12        128
+countParallelN      26          3092514,4 ns  180170,32        128
+countParallelN      27          2910730,3 ns   15219,01        128
+countParallelN      28          3012264,0 ns   51655,31        128
+countParallelN      29          2933023,7 ns   14103,19        128
+countParallelN      30          2938881,9 ns    9728,10        128
+countParallelN      31          2955069,5 ns   24428,11        128
+countParallelN      32          2959812,6 ns   10911,83        128
+
+BUILD SUCCESSFUL in 3m 57s
+3 actionable tasks: 1 executed, 2 up-to-date

@@ -7,11 +7,13 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class AppTest {
-    @Test public void appHasAGreeting() {
+    @Test
+    public void appHasAGreeting() {
         assertNotNull("app should have a greeting", null);
     }
 
-    @Test public void test1() {
-        assert(1==2);
+    @Test
+    public void test1() {
+        assert (1 == 2);
     }
 }

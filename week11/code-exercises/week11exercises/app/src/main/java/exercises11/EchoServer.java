@@ -6,38 +6,43 @@ import java.net.*;
 import java.io.*;
 
 public class EchoServer {
-    private ServerSocket serverSocket;
-    private Socket clientSocket;
-    private PrintWriter out;
-    private BufferedReader in;
+  private ServerSocket serverSocket;
+  private Socket clientSocket;
+  private PrintWriter out;
+  private BufferedReader in;
 
-    public void start(int port) {
-      try {
-        serverSocket = new ServerSocket(port);
-        clientSocket = serverSocket.accept();
-        out = new PrintWriter(clientSocket.getOutputStream(), true);
-        in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-        String inputLine;
-        while ((inputLine = in.readLine()) != null) {
-                if (".".equals(inputLine)) {
-                    out.println("good bye");
-                    break;
-                }
-                out.println(inputLine);
+  public void start(int port) {
+    try {
+      serverSocket = new ServerSocket(port);
+      clientSocket = serverSocket.accept();
+      out = new PrintWriter(clientSocket.getOutputStream(), true);
+      in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+      String inputLine;
+      while ((inputLine = in.readLine()) != null) {
+        if (".".equals(inputLine)) {
+          out.println("good bye");
+          break;
         }
-      } catch (IOException e) { System.out.println(e.getMessage());}
+        out.println(inputLine.toUpperCase());
+      }
+    } catch (IOException e) {
+      System.out.println(e.getMessage());
     }
+  }
 
-    public void stop() {
-      try {
-        in.close();
-        out.close();
-        clientSocket.close();
-        serverSocket.close();
-      } catch (IOException e) { System.out.println(e.getMessage());   }
+  public void stop() {
+    try {
+      in.close();
+      out.close();
+      clientSocket.close();
+      serverSocket.close();
+    } catch (IOException e) {
+      System.out.println(e.getMessage());
     }
-    public static void main(String[] args) {
-        EchoServer server=new EchoServer();
-        server.start(8080);
-    }
+  }
+
+  public static void main(String[] args) {
+    EchoServer server = new EchoServer();
+    server.start(8080);
+  }
 }

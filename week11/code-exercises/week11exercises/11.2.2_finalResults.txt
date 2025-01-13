@@ -1,0 +1,16 @@
+
+--- noLocking ---
+Socket com:                           2,2 mS   44523,34        128
+count= 26
+
+--- serverLocking ---
+Socket com:                           1,3 mS   12029,06        256
+count= 100
+
+--- clientLocking ---
+Socket com:                           5,0 mS   29747,41         64
+count= 100
+
+The noLocking is subject to race conditions, therefore the final is innaccurate as shown in the results.
+The serverLocking relies on the server sockets's ability to handle concurrent calls and ensure atomic access to shared resources. It is also much faster compared to clientLocking.
+The clientLocking uses client side locking with synchronization, which ensures that only one "client" can access the get and put methods in on the server. It is thread safe and eliminates race conditions, but it is much slower, because it only allows access to the server socket, one thread at a time. Moreover it requires that the client uses one shared variable so unless only one client is meant to use the server, this scenario might be a bit unrealistic.

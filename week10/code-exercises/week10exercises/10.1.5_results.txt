@@ -1,0 +1,18 @@
+> Task :app:compileJava UP-TO-DATE
+> Task :app:processResources UP-TO-DATE
+> Task :app:classes UP-TO-DATE
+
+> Task :app:run
+Sequential                      2640661,3 ns   86628,91        128
+IntStream                       2647549,3 ns  119807,92        128
+Parallel                         565708,4 ns   12977,65        512
+ParallelStream                   554587,5 ns   13945,58        512
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.10/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 25s
+3 actionable tasks: 1 executed, 2 up-to-date

@@ -1,0 +1,40 @@
+> Task :app:compileJava UP-TO-DATE
+> Task :app:processResources UP-TO-DATE
+> Task :app:classes UP-TO-DATE
+
+> Task :app:run
+=================================
+Using Sequential Stream
+=================================
+1 main
+2 main
+3 main
+4 main
+5 main
+6 main
+7 main
+8 main
+9 main
+10 main
+=================================
+Using Parallel Stream
+=================================
+7 main
+6 ForkJoinPool.commonPool-worker-7
+9 ForkJoinPool.commonPool-worker-5
+8 ForkJoinPool.commonPool-worker-9
+3 ForkJoinPool.commonPool-worker-3
+2 ForkJoinPool.commonPool-worker-7
+1 ForkJoinPool.commonPool-worker-3
+10 ForkJoinPool.commonPool-worker-13
+4 ForkJoinPool.commonPool-worker-7
+5 ForkJoinPool.commonPool-worker-9
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.10/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 525ms
+3 actionable tasks: 1 executed, 2 up-to-date
