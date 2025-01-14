@@ -1,11 +1,11 @@
 // For week 2
-// sestoft@itu.dk * 2014-08-25
-// raup@itu.dk * 2021-09-03
+
+// gradle -PmainClass=exercises02.NewMutableInteger2 run
 package exercises02;
 
-public class TestMutableInteger {
+public class NewMutableIntegerV2 {
     public static void main(String[] args) {
-        final MutableInteger mi = new MutableInteger();
+        final VolSyncMutableInteger mi = new VolSyncMutableInteger();
         Thread t = new Thread(() -> {
             while (mi.get() == 0) // Loop while zero
             {
@@ -29,9 +29,9 @@ public class TestMutableInteger {
     }
 }
 
-class MutableInteger {
-    // WARNING: Not ready for usage by concurrent programs
-    private int value = 0;
+class VolSyncMutableInteger {
+
+    volatile private int value = 0;
 
     public void set(int value) {
         this.value = value;

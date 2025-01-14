@@ -9,13 +9,17 @@ public class NoVisibility1 {
 
     public NoVisibility1() {
         Thread t1 = new Thread(() -> {
-                while (running) {
-                    /* do nothing */
-                }
-                System.out.println("t1 finishing execution");
+            while (running) {
+                /* do nothing */
+            }
+            System.out.println("t1 finishing execution");
         });
         t1.start();
-        try{Thread.sleep(500);}catch(InterruptedException e){e.printStackTrace();}
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         running = false;
         System.out.println("Main finishing execution");
     }

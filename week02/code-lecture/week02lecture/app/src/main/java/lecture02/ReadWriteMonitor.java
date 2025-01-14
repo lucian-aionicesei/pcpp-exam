@@ -1,5 +1,6 @@
 // For week 2
-// raup@itu.dk * 01/09/2021
+
+// gradle -PmainClass=lecture02.ReadersWriters run
 package lecture02;
 
 import java.util.concurrent.locks.Lock;
@@ -7,11 +8,10 @@ import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.Condition;
 
 public class ReadWriteMonitor {
-    private int readers         = 0;
-    private boolean writer      = false;
-    private Lock lock           = new ReentrantLock();
+    private int readers = 0;
+    private boolean writer = false;
+    private Lock lock = new ReentrantLock();
     private Condition condition = lock.newCondition();
-
 
     //////////////////////////
     // Read lock operations //
@@ -20,14 +20,12 @@ public class ReadWriteMonitor {
     public void readLock() {
         lock.lock();
         try {
-            while(writer)
+            while (writer)
                 condition.await();
             readers++;
-        }
-        catch (InterruptedException e) {
+        } catch (InterruptedException e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             lock.unlock();
         }
     }
@@ -36,14 +34,12 @@ public class ReadWriteMonitor {
         lock.lock();
         try {
             readers--;
-            if(readers==0)
+            if (readers == 0)
                 condition.signalAll();
-        }
-        finally {
+        } finally {
             lock.unlock();
         }
     }
-
 
     ///////////////////////////
     // Write lock operations //
@@ -52,14 +48,12 @@ public class ReadWriteMonitor {
     public void writeLock() {
         lock.lock();
         try {
-            while(readers > 0 || writer)
+            while (readers > 0 || writer)
                 condition.await();
-            writer=true;
-        }
-        catch (InterruptedException e) {
+            writer = true;
+        } catch (InterruptedException e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             lock.unlock();
         }
     }
@@ -67,10 +61,9 @@ public class ReadWriteMonitor {
     public void writeUnlock() {
         lock.lock();
         try {
-            writer=false;
+            writer = false;
             condition.signalAll();
-        }
-        finally {
+        } finally {
             lock.unlock();
         }
     }

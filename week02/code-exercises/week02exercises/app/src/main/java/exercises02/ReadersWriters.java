@@ -1,11 +1,12 @@
 // For week 2
-// raup@itu.dk * 01/09/2021
-package lecture02;
+
+// gradle -PmainClass=exercises02.ReadersWriters run
+package exercises02;
 
 public class ReadersWriters {
 
     public ReadersWriters() {
-        FairReadWriteMonitor m = new FairReadWriteMonitor();
+        ReadWriteMonitorV2 m = new ReadWriteMonitorV2();
 
         final int numReadersWriters = 10;
 

@@ -1,11 +1,11 @@
 // For week 2
-// sestoft@itu.dk * 2014-08-25
-// raup@itu.dk * 2021-09-03
+
+// gradle -PmainClass=exercises02.NewMutableInteger run
 package exercises02;
 
-public class TestMutableInteger {
+public class NewMutableInteger {
     public static void main(String[] args) {
-        final MutableInteger mi = new MutableInteger();
+        final SyncMutableInteger mi = new SyncMutableInteger();
         Thread t = new Thread(() -> {
             while (mi.get() == 0) // Loop while zero
             {
@@ -29,15 +29,15 @@ public class TestMutableInteger {
     }
 }
 
-class MutableInteger {
-    // WARNING: Not ready for usage by concurrent programs
+class SyncMutableInteger {
+
     private int value = 0;
 
-    public void set(int value) {
+    public synchronized void set(int value) {
         this.value = value;
     }
 
-    public int get() {
+    public synchronized int get() {
         return value;
     }
 }
