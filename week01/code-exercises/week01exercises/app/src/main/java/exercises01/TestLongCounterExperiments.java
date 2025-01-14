@@ -1,6 +1,6 @@
 // For week 1
-// sestoft@itu.dk * 2014-08-21
-// raup@itu.dk * 2021-08-27
+
+// gradle -PmainClass=exercises01.TestLongCounterExperiments run
 package exercises01;
 
 import java.util.concurrent.locks.Lock;
@@ -11,7 +11,7 @@ public class TestLongCounterExperiments {
     LongCounter lc = new LongCounter();
     int counts = 10_000_000;
 
-    // Comment out reentrant lock for demo
+    // Comment out ReentrantLock for demo
     Lock l = new ReentrantLock();
 
     public TestLongCounterExperiments() {
@@ -42,6 +42,11 @@ public class TestLongCounterExperiments {
         private long count = 0;
 
         public void increment() {
+            /*
+             * We identify the critical section to be "count = count + 1;" because it is
+             * subject to data race: Multiple threads may access and update the same value
+             * at the same time.
+             */
             l.lock();
             count = count + 1;
             l.unlock();

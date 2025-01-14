@@ -1,5 +1,9 @@
+package exercises01;
+
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+
+// gradle -PmainClass=exercises01.Exercise2 run
 
 public class Exercise2 {
     Lock l = new ReentrantLock();
@@ -57,7 +61,7 @@ public class Exercise2 {
 // t1(1), print "-"
 // t1(2), wait
 // t2(1), print "-"
-// t2(1), wait
+// t2(2), wait
 // t1(3), print "|"
 // t1(1), print "-"
 // t1(2), wait
