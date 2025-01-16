@@ -6,7 +6,10 @@ package exercises02;
 public class ReadersWriters {
 
     public ReadersWriters() {
+
+        /* Comment out for comparison */
         ReadWriteMonitorV2 m = new ReadWriteMonitorV2();
+        // ReadWriteMonitor m = new ReadWriteMonitor();
 
         final int numReadersWriters = 10;
 
