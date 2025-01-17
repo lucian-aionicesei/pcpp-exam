@@ -34,9 +34,9 @@ public class CounterTest {
 
     private Counter count;
     private CyclicBarrier barrier;
-    // You may use a Thread Pool to increase the performance of the test (Thread Pools will be explained in week 09)
+    // You may use a Thread Pool to increase the performance of the test (Thread
+    // Pools will be explained in week 09)
     // private final static ExecutorService pool = Executors.newCachedThreadPool();
-
 
     @BeforeEach
     public void initialize() {
@@ -45,9 +45,7 @@ public class CounterTest {
         // count = new CounterAto();
     }
 
-
-
-    // @Test
+    @Test
     // @Disabled
     @DisplayName("Counter Sequential")
     public void testingCounterSequential() {
@@ -57,10 +55,8 @@ public class CounterTest {
             count.inc();
             localSum++;
         }
-        assertTrue(count.get()==localSum);
+        assertTrue(count.get() == localSum);
     }
-
-
 
     @ParameterizedTest
     @Disabled
@@ -68,7 +64,7 @@ public class CounterTest {
     @MethodSource("argsGeneration")
     public void testingCounterParallel(int nrThreads, int N) {
         System.out.printf("Parallel counter tests with %d threads and %d iterations",
-                          nrThreads,N);
+                nrThreads, N);
 
         // init barrier
         barrier = new CyclicBarrier(nrThreads + 1);
@@ -84,7 +80,8 @@ public class CounterTest {
         } catch (InterruptedException | BrokenBarrierException e) {
             e.printStackTrace();
         }
-        assertTrue(N*nrThreads == count.get(), "count.get() == "+count.get()+", but we expected "+N*nrThreads);
+        assertTrue(N * nrThreads == count.get(),
+                "count.get() == " + count.get() + ", but we expected " + N * nrThreads);
     }
 
     private static List<Arguments> argsGeneration() {
@@ -106,14 +103,13 @@ public class CounterTest {
         // (2^j, i) for j \in {100,200,...,J} and j \in {1,..,I}
         for (int i = iInit; i <= I; i += iIncrement) {
             for (int j = jInit; j < J; j += jIncrement) {
-                list.add(Arguments.of((int) Math.pow(2,j),i));
+                list.add(Arguments.of((int) Math.pow(2, j), i));
             }
         }
 
         // Return the list
         return list;
     }
-
 
     @RepeatedTest(1000)
     // @Test
@@ -124,22 +120,23 @@ public class CounterTest {
         final int N = 50;
 
         // init barrier
-        barrier = new CyclicBarrier(nrThreads+1);
+        barrier = new CyclicBarrier(nrThreads + 1);
 
         // start threads
         for (int j = 0; j < nrThreads; j++) {
             // As an example, here we do not use the Turnstile class
             // we explicitly define and start threads within the body of the test
             new Thread(() -> {
-                    try {
-                        barrier.await(); // waits until all threads all ready
-                        for (int i = 0; i < N; i++) {
-                            count.inc();
-                        }
-                        barrier.await(); // waits until all threads are done (needed for the main thread to know when all threads are finished)
-                    } catch (InterruptedException | BrokenBarrierException e) {
-                        e.printStackTrace();
+                try {
+                    barrier.await(); // waits until all threads all ready
+                    for (int i = 0; i < N; i++) {
+                        count.inc();
                     }
+                    barrier.await(); // waits until all threads are done (needed for the main thread to know when all
+                                     // threads are finished)
+                } catch (InterruptedException | BrokenBarrierException e) {
+                    e.printStackTrace();
+                }
 
             }).start();
         }
@@ -152,16 +149,18 @@ public class CounterTest {
         }
 
         // Assert property
-        assertTrue(N*nrThreads == count.get(), "count.get() == "+count.get()+", but we expected "+N*nrThreads);
+        assertTrue(N * nrThreads == count.get(),
+                "count.get() == " + count.get() + ", but we expected " + N * nrThreads);
     }
-
 
     /*** Test threads ***/
     public class Turnstile extends Thread {
 
         private final int N;
 
-        public Turnstile(int N) { this.N = N; }
+        public Turnstile(int N) {
+            this.N = N;
+        }
 
         public void run() {
             try {
@@ -169,7 +168,8 @@ public class CounterTest {
                 for (int i = 0; i < N; i++) {
                     count.inc();
                 }
-                barrier.await(); // waits until all threads are done (needed for the main thread to know when all threads are finished)
+                barrier.await(); // waits until all threads are done (needed for the main thread to know when all
+                                 // threads are finished)
             } catch (InterruptedException | BrokenBarrierException e) {
                 e.printStackTrace();
             }

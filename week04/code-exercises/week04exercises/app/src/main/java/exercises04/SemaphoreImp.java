@@ -14,16 +14,16 @@ public class SemaphoreImp {
     private Condition condition;
 
     public SemaphoreImp(int c) {
-        capacity  = c;
-        state     = 0;
-        lock      = new ReentrantLock();
+        capacity = c;
+        state = 0;
+        lock = new ReentrantLock();
         condition = lock.newCondition();
     }
 
     public void acquire() throws InterruptedException {
         lock.lock();
         try {
-            while(state == capacity) {
+            while (state == capacity) {
                 condition.await();
             }
             state++;

@@ -1,5 +1,19 @@
 package exercises03;
 
+/* Consider a Person class with attributes: id (long), name (String), zip (int) and address
+(String). The Person class has the following functionality:
+    • It must be possible to change zip and address together.
+    • It is not necessary to be able to change name—but it is not forbidden.
+    • The id cannot be changed.
+    • It must be possible to get the values of all fields.
+    • There must be a constructor for Person that takes no parameters. When calling this constructor, each new
+instance of Person gets an id one higher than the previously created person. In case the constructor is used
+to create the first instance of Person, then the id for that object is set to 0.
+    • There must be a constructor for Person that takes as parameter the initial id value from which future ids
+are generated. In case the constructor is used to create the first instance of Person, the initial parameter
+must be used. For subsequent instances, the parameter must be ignored and the value of the previously
+created person must be used (as stated in the previous requirement). */
+
 public class Person {
     private final long id;
     private String name;

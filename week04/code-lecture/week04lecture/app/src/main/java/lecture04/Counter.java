@@ -5,12 +5,11 @@ package lecture04;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-
 public interface Counter {
     public void inc();
+
     public int get();
 }
-
 
 class CounterDR implements Counter {
 
