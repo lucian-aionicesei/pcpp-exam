@@ -7,7 +7,7 @@ import java.util.concurrent.CyclicBarrier;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 
-public class ConcurrentSetTest2 {
+public class ConcurrentSetTest_size {
 
     private ConcurrentIntegerSet set;
     private CyclicBarrier barrier;

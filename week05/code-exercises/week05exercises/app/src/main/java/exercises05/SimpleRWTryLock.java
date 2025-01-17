@@ -24,7 +24,7 @@ class SimpleRWTryLock implements SimpleRWTryLockInterface {
             if (oldHolders == null) {
                 updatedReadersList = new ReaderList(current, null);
             } else {
-                updatedReadersList = new ReaderList(current, oldHolders);
+                updatedReadersList = new ReaderList(current, (ReaderList) oldHolders);
             }
 
         } while (!holders.compareAndSet(oldHolders, updatedReadersList));

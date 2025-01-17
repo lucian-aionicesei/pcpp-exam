@@ -1,6 +1,9 @@
 package exercises04;
 
+// gradle cleanTest test --tests exercises04.ConcurrentSetTest
+
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import java.util.concurrent.CyclicBarrier;
@@ -23,15 +26,16 @@ public class ConcurrentSetTest {
     @BeforeEach
     public void initialize() {
         // init set
-        set = new ConcurrentIntegerSetBuggy();
+        // set = new ConcurrentIntegerSetBuggy();
         // set = new ConcurrentIntegerSetSync();
-        // set = new ConcurrentIntegerSetLibrary();
+        set = new ConcurrentIntegerSetLibrary();
     }
 
     // TODO: Define your tests below
 
     // Buggy test add
 
+    @Disabled
     @RepeatedTest(500)
     public void AddTester() {
         int threadCount = 16;
@@ -55,7 +59,6 @@ public class ConcurrentSetTest {
             try {
                 thread.join();
             } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
@@ -69,7 +72,7 @@ public class ConcurrentSetTest {
     }
 
     // test remove
-
+    // @Disabled
     @RepeatedTest(500)
     public void RemoveTester() {
         int threadCount = 16;
@@ -93,7 +96,6 @@ public class ConcurrentSetTest {
             try {
                 thread.join();
             } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }

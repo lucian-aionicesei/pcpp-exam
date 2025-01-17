@@ -1,5 +1,7 @@
 package exercises05;
 
+// gradle cleanTest test --tests exercises05.TestHistograms
+
 // JUnit testing imports
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterAll;

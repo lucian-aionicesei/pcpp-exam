@@ -1,16 +1,15 @@
 // For week 4
 // raup@itu.dk * 2023-09-16
 
-package lecture04;
+package exercises04;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-
 public interface Counter {
     public void inc();
+
     public int get();
 }
-
 
 class CounterDR implements Counter {
 
