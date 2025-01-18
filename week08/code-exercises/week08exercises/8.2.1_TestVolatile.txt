@@ -1,0 +1,17 @@
+> Task :app:compileJava
+> Task :app:processResources UP-TO-DATE
+> Task :app:classes
+
+> Task :app:run
+# OS:   Mac OS X; 15.1.1; aarch64
+# JVM:  Eclipse Adoptium; 17.0.8
+# CPU:  null; 8 "cores"
+# Date: 2025-01-18T17:42:52+0100
+Mark 7 measurements
+Testing volatile int                  6,1 ns       0,33   67108864
+Testing regular int                   3,6 ns       0,29   67108864
+Volatile int value = 1342177260
+Regular int value = 1342177260
+
+BUILD SUCCESSFUL in 13s
+3 actionable tasks: 2 executed, 1 up-to-date

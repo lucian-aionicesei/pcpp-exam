@@ -23,7 +23,7 @@ class LockFreeStack<T> {
      * -> T3 – if successfully executed, the element has been pushed to the stack
      * Correctness (informal but systematic, tries to cover all branches):
      * -> If two threads execute push() concurrently before the oldHead is updated,
-     * then only one succeeds in executing T3 (and possibly auipdating the oldHead).
+     * then only one succeeds in executing T3 (and possibly updating the oldHead).
      * The other fails and repeats the do loop.
      * -> If a thread executes push() after another thread updated the oldHead, then
      * T3 fails and it repeats the loop.

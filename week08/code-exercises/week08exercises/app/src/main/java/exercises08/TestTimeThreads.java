@@ -5,6 +5,8 @@ package exercises08;
 // sestoft@itu.dk * 2014-09-10, 2015-09-15
 // jst@itu.dk * 2024-09-09
 
+// gradle -PmainClass=exercises08.TestTimeThreads run
+
 import java.util.concurrent.atomic.AtomicInteger;
 
 import benchmarking.Benchmark;

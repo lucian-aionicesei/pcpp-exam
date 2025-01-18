@@ -1,0 +1,20 @@
+> Task :app:compileJava
+> Task :app:processResources UP-TO-DATE
+> Task :app:classes
+
+> Task :app:run
+# OS:   Mac OS X; 15.1.1; aarch64
+# JVM:  Eclipse Adoptium; 17.0.8
+# CPU:  null; 8 "cores"
+# Date: 2025-01-18T17:25:55+0100
+Mark 7 measurements
+Point creation                       56,2 ns       2,73    8388608
+Thread's work                      7195,4 ns     649,91      65536
+Thread create                       528,5 ns      43,96     524288
+Thread create start               47963,8 ns    2663,38       8192
+Thread create start join          48038,7 ns    3056,82       8192
+ai value = 1638340000
+Uncontended lock                      9,1 ns       0,60   33554432
+
+BUILD SUCCESSFUL in 46s
+3 actionable tasks: 2 executed, 1 up-to-date

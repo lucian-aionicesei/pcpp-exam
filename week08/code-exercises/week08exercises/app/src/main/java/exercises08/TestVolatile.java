@@ -2,6 +2,8 @@ package exercises08;
 
 import benchmarking.Benchmark;
 
+// gradle -PmainClass=exercises08.TestVolatile run
+
 public class TestVolatile {
     private volatile int vCtr;
     private int ctr;

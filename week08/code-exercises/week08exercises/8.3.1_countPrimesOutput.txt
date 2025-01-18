@@ -43,3 +43,5 @@ countParallelN      32          2959812,6 ns   10911,83        128
 
 BUILD SUCCESSFUL in 3m 57s
 3 actionable tasks: 1 executed, 2 up-to-date
+
+8.3.2 It seems that dividing the workload to an increasing amount of threads, does not necessarily increase the response times. Despite the fact that the computer has 8 cores, the best results seem to be given by using 3 treads. Surprisingly, using more than 3 threads becomes increasingly slower, even compared to doing the operation sequentially.

@@ -28,3 +28,8 @@ countParallelN      20          2628495,6 ns   25887,83        128
 
 BUILD SUCCESSFUL in 2m 13s
 3 actionable tasks: 1 executed, 2 up-to-date
+
+The performance boost from using multiple threads is quite clear. By dividing the workload
+across N threads, each thread handles a smaller portion of the array concurrently, allowing for
+faster completion compared to the sequential approach where one thread processes the entire
+array
