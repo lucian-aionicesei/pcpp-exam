@@ -1,6 +1,8 @@
 // For week 4
 // raup@itu.dk * 2023-09-16
 
+// gradle cleanTest test --tests lecture04.BoundedBufferTest
+
 package lecture04;
 
 import org.junit.jupiter.api.AfterAll;
@@ -31,7 +33,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.atomic.AtomicInteger;
 
-
 public class BoundedBufferTest {
 
     private BoundedBuffer<Integer> buffer;
@@ -43,10 +44,9 @@ public class BoundedBufferTest {
     private AtomicInteger putSum;
     private AtomicInteger takeSum;
 
-
     @BeforeEach
     public void initialize() {
-        putSum  = new AtomicInteger(0);
+        putSum = new AtomicInteger(0);
         takeSum = new AtomicInteger(0);
     }
 
@@ -54,16 +54,16 @@ public class BoundedBufferTest {
     @DisplayName("PutTakeTest of Bounded Buffer")
     @MethodSource("argsProvider")
     public void putTakeTest(int nrThreads,
-                            int nrTrials,
-                            int bufferSize) {
+            int nrTrials,
+            int bufferSize) {
         System.out.printf("Running test with parameters: (%d,%d,%d)",
-                          nrThreads, nrTrials, bufferSize);
+                nrThreads, nrTrials, bufferSize);
 
         // init buffer
-        buffer  = new BoundedBufferMonitor<Integer>(bufferSize);
+        buffer = new BoundedBufferMonitor<Integer>(bufferSize);
 
         // init barrier
-        barrier = new CyclicBarrier((nrThreads*2) + 1);
+        barrier = new CyclicBarrier((nrThreads * 2) + 1);
 
         for (int i = 0; i < nrThreads; i++) {
             new Producer(nrTrials).start();
@@ -76,7 +76,7 @@ public class BoundedBufferTest {
         } catch (InterruptedException | BrokenBarrierException e) {
             e.printStackTrace();
         }
-        assert(putSum.get() == takeSum.get());
+        assert (putSum.get() == takeSum.get());
     }
 
     private static List<Arguments> argsProvider() {
@@ -91,7 +91,6 @@ public class BoundedBufferTest {
         final int jInit = 1;
         final int jIncrement = 1;
 
-
         // Max number of buffer size
         final int K = 100;
         final int kInit = 20;
@@ -101,11 +100,12 @@ public class BoundedBufferTest {
         List<Arguments> list = new ArrayList<Arguments>();
 
         // Loop to generate each parameter entry
-        // (2^j, i, k) for i \in {50,100,...,J} and j \in {1,..,I} and k \in {20,40,...,K}
+        // (2^j, i, k) for i \in {50,100,...,J} and j \in {1,..,I} and k \in
+        // {20,40,...,K}
         for (int i = iInit; i <= I; i += iIncrement) {
             for (int j = jInit; j < J; j += jIncrement) {
                 for (int k = kInit; k < K; k += kIncrement) {
-                    list.add(Arguments.of((int) Math.pow(2,j), i, k));
+                    list.add(Arguments.of((int) Math.pow(2, j), i, k));
                 }
             }
         }
@@ -113,10 +113,6 @@ public class BoundedBufferTest {
         // Return the list
         return list;
     }
-
-
-
-
 
     /**** Threads to test ****/
     class Producer extends Thread {
@@ -132,7 +128,7 @@ public class BoundedBufferTest {
             try {
                 barrier.await();
                 for (int i = 0; i < nrTrials; i++) {
-                    Random r  = new Random();
+                    Random r = new Random();
                     int toPut = r.nextInt();
                     buffer.put(toPut);
                     localSum += toPut;
@@ -167,6 +163,5 @@ public class BoundedBufferTest {
             }
         }
     }
-
 
 }

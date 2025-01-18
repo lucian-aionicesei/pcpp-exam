@@ -1,6 +1,8 @@
 // For week 4
 // raup@itu.dk * 2023-09-16
 
+// gradle cleanTest test --tests lecture04.CounterTest
+
 package lecture04;
 
 // JUnit testing imports

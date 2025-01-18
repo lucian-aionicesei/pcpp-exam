@@ -1,6 +1,8 @@
 // raup@itu.dk * 2023-10-20
 package exercises06;
 
+// gradle cleanTest test --tests exercises06.TestLockFreeStack
+
 // JUnit testing imports
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterAll;
