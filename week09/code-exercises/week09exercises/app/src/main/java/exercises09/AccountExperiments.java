@@ -1,6 +1,8 @@
 // jst@itu.dk * 04/10/2023
 package exercises09;
 
+// gradle -PmainClass=exercises09.AccountExperiments run
+
 import java.util.Random;
 import benchmarking.Benchmark;
 

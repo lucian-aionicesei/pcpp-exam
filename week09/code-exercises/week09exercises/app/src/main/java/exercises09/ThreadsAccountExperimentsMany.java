@@ -3,6 +3,8 @@ package exercises09;
 
 import java.util.Random;
 
+// gradle -PmainClass=exercises09.ThreadsAccountExperimentsMany run
+
 public class ThreadsAccountExperimentsMany {
 
   static final int N = 10;

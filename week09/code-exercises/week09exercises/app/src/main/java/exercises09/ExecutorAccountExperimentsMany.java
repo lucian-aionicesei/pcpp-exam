@@ -32,34 +32,6 @@ public class ExecutorAccountExperimentsMany {
     for (int i = 0; i < N; i++) {
       accounts[i] = new Account(i);
     }
-    // for (int i = 0; i < NO_THREADS; i++) {
-    // try {
-    // (threads[i] = new Thread(() -> doNTransactions(NO_TRANSACTION))).start();
-    // } catch (Error ex) {
-    // System.out.println("At i = " + i + " I got error: " + ex);
-    // System.exit(0);
-    // }
-    // }
-    // for (int i = 0; i < NO_THREADS; i++) {
-    // try {
-    // threads[i].join();
-    // } catch (Exception dummy) {
-    // }
-    // ;
-    // }
-
-    // while (!exec.isShutdown()) {
-    // exec.execute(new Runnable() {
-    // public void run() {
-    // doNTransactions(NO_TRANSACTION);
-    // }
-    // });
-    // }
-
-    // Runnable task = () -> doNTransactions(NO_TRANSACTION);
-    // while (!exec.isShutdown()) {
-    // exec.execute(task);
-    // }
 
     pool = new ForkJoinPool(NO_THREADS);
 
