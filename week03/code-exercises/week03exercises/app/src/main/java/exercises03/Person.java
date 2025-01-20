@@ -21,6 +21,8 @@ public class Person {
     private String address;
     private static long idCounter = 0;
 
+    // long idCounter = 0;
+
     public Person() {
         // class level lock
         synchronized (Person.class) { // Synchronized on the class to manage static counter

@@ -1,6 +1,6 @@
 // Week 3
 // raup@itu.dk * 2021/09/16
-package lecture03;
+package exercises03;
 
 import java.util.List;
 import java.util.ArrayList;

@@ -42,14 +42,19 @@ public class CounterThreads2Covid {
         }
     }
 
+    // t1(temp = 10),t2(temp = 10),t1(counter = 11), t2(counter = 11)
+
     // Solution
     // public class Turnstile extends Thread {
     // public void run() {
     // for (int i = 0; i < PEOPLE; i++) {
     // l.lock();
+    // try {
     // if (counter < MAX_PEOPLE_COVID) // start of critical section
     // counter++;// end of critical section
+    // } finally {
     // l.unlock();
+    // }
     // }
     // }
     // }

@@ -3,6 +3,8 @@
 
 package exercises10;
 
+// gradle -PmainClass=exercises10.TestWordStream run
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -26,9 +28,10 @@ import benchmarking.Timer;
 public class TestWordStream {
   public static void main(String[] args) {
     String filename = "src/main/resources/english-words.txt";
-    String url = "https://staunstrups.dk/jst/english-words.txt";
-    // System.out.println("Words count: " + readWords(filename).count());
-    System.out.println("Words count: " + readWordsFromUrl(url).count());
+    // String url = "https://staunstrups.dk/jst/english-words.txt";
+    System.out.println("Words count: " + readWords(filename).count()); // Words
+    // count: 235,886
+    // System.out.println("Words count: " + readWordsFromUrl(url).count());
 
     // 10.2.2 print the first 100 words
     // readWords(filename).limit(100).forEach(System.out::println);
@@ -65,12 +68,12 @@ public class TestWordStream {
     // DoubleStream.of(readWords(filename).mapToDouble(String::length).toArray());
     // DoubleSummaryStatistics stats = ds.summaryStatistics();
     // // A different approach
-    DoubleSummaryStatistics stats = readWords(filename)
-        .mapToDouble(String::length)
-        .summaryStatistics();
+    // DoubleSummaryStatistics stats = readWords(filename)
+    // .mapToDouble(String::length)
+    // .summaryStatistics();
 
-    System.out.printf("min=%g, max=%g, mean=%g",
-        stats.getMin(), stats.getMax(), stats.getAverage());
+    // System.out.printf("min=%g, max=%g, mean=%g",
+    // stats.getMin(), stats.getMax(), stats.getAverage());
   }
 
   public static Stream<String> readWords(String filename) {

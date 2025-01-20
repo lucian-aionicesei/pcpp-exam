@@ -3,6 +3,8 @@ package exercises10;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
+// gradle -PmainClass=exercises10.Java8ParallelStreamMain run
+
 public class Java8ParallelStreamMain {
     public static void main(String[] args) {
         // System.out.println("=================================");
@@ -48,7 +50,6 @@ public class Java8ParallelStreamMain {
         for (int i = 1; i < 1000000; i++) {
             int div = (number / i);
             sum += div;
-
         }
         return sum;
     }

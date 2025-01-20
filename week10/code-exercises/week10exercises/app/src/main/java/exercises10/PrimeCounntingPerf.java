@@ -3,6 +3,8 @@ package exercises10;
 
 //JSt vers Oct 23, 2023
 
+// gradle -PmainClass=exercises10.PrimeCountingPerf run
+
 import java.util.*;
 import java.util.stream.*;
 import java.io.IOException;
